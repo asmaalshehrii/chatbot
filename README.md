@@ -1,6 +1,6 @@
-# 🤖 OpenAI Chatbot with Dog Sticker 🐶
+# 🤖 OpenAI Chatbot
 
-This is a **custom AI chatbot** powered by **OpenAI (GPT-4o-mini)**, built with **FastAPI (backend) and Streamlit (frontend)**. The chatbot features a clean UI and includes **a dog sticker** 🐶 next to the AI responses.
+This is a **custom AI chatbot** powered by **OpenAI (GPT-4o-mini)**, built with **FastAPI (backend) and Streamlit (frontend)**. The chatbot features a clean UI 
 
 ### 🚀 **Live Demo**  
 🔗 [Try the Chatbot Here](https://chatbot-nrfufwrptl4qbrc5g297ew.streamlit.app/)  
@@ -13,7 +13,6 @@ This is a **custom AI chatbot** powered by **OpenAI (GPT-4o-mini)**, built with 
 - ✅ **FastAPI Backend** deployed on **Render**
 - ✅ **Streamlit Frontend** deployed on **Streamlit Cloud**
 - ✅ **OpenAI GPT Integration** for AI-powered responses
-- ✅ **Interactive UI** with a dog sticker 🐶
 - ✅ **Easy to Use** – Just type and chat!
 
 ---
