@@ -1,43 +1,66 @@
 import streamlit as st
 import requests
 
-# FastAPI backend URL (Replace with your deployed backend URL later)
+# Backend API URL (Update if necessary)
 API_URL = "https://chatbot-1-zisg.onrender.com/chat"
 
-# Streamlit UI
-st.set_page_config(page_title="Chatbot", page_icon="🤖")
+# 🎨 Custom Styling with CSS
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #F0F2F6;
+    }
+    .stChatMessage {
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .stChatMessage.user {
+        background-color: #DCF8C6; /* Light green for user */
+        text-align: left;
+    }
+    .stChatMessage.assistant {
+        background-color: #E0E0E0; /* Light grey for bot */
+        text-align: left;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-st.title("🤖 OpenAI Chatbot")
-st.write("Talk to the chatbot powered by OpenAI.")
+# 🎤 Title and Description
+st.markdown("<h1 style='text-align: center;'>🤖 OpenAI Chatbot</h1>", unsafe_allow_html=True)
+st.write("💬 Chat with an AI-powered bot.")
 
-# Chat history
+# 🗂️ Session State for Chat History
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
 
-# Display previous messages
-for message in st.session_state["messages"]:
-    role, content = message
+# 📜 Display previous messages in chat format
+for role, content in st.session_state["messages"]:
     with st.chat_message(role):
         st.write(content)
 
-# User input
-user_input = st.text_input("You:", key="user_input")
+# ✍️ User Input Box with Placeholder
+user_input = st.text_input("Type your message...", key="user_input", placeholder="Ask me anything...")
 
-if st.button("Send"):
-    if user_input:
-        # Add user message to chat history
+# 🚀 Send Button for Chat
+if st.button("Send 🚀", use_container_width=True):
+    if user_input.strip():
+        # Save user message to chat history
         st.session_state["messages"].append(("user", user_input))
-        
-        # Send request to FastAPI backend
+
+        # 🎯 API Request
         response = requests.post(API_URL, json={"message": user_input})
         
         if response.status_code == 200:
-            bot_response = response.json().get("response", "Error: No response received.")
+            bot_response = response.json().get("response", "🤖 I couldn't process that request.")
         else:
-            bot_response = f"Error: {response.status_code}"
+            bot_response = f"⚠️ Error: {response.status_code}"
 
-        # Add bot response to chat history
+        # Save bot response to chat history
         st.session_state["messages"].append(("assistant", bot_response))
         
-        # Clear input field
-        st.experimental_rerun()
+        # 🔄 Refresh UI
+        st.rerun()
