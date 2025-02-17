@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # FastAPI backend URL (Replace with your deployed backend URL later)
-API_URL = "http://127.0.0.1:8000/chat"  # Change this if your backend is hosted online
+API_URL = "https://chatbot-1-zisg.onrender.com/chat"
 
 # Streamlit UI
 st.set_page_config(page_title="Chatbot", page_icon="🤖")
